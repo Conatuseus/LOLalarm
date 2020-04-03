@@ -32,9 +32,6 @@ public class RiotService {
             .buildAndExpand(summonerName);
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set(HttpHeaders.ACCEPT_LANGUAGE, "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7");
-        httpHeaders.set(HttpHeaders.ACCEPT_CHARSET, "application/x-www-form-urlencoded; charset=UTF-8");
-        httpHeaders.set(HttpHeaders.ORIGIN, "https://developer.riotgames.com");
         // TODO: RIOT API KEY를 private 레포에서 가져오도록 하기
 //        httpHeaders.set("X-Riot-Token","");
 
