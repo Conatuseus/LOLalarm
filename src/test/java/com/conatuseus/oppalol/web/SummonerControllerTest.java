@@ -27,7 +27,7 @@ class SummonerControllerTest {
     @Test
     void findSummoner() {
         //given
-        SummonerResponse summonerResponse = new SummonerResponse("encryptedId","name","accountId","puuid",100L);
+        SummonerResponse summonerResponse = new SummonerResponse("encryptedId", "name", "accountId", "puuid", 100L);
 
         //when
         when(summonerService.findSummoner("name")).thenReturn(summonerResponse);
