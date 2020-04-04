@@ -1,6 +1,7 @@
 package com.conatuseus.oppalol.service.riotservice;
 
 import com.conatuseus.oppalol.web.dto.RiotSummonerResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.data.redis.core.RedisTemplate;
