@@ -14,10 +14,10 @@ import org.springframework.test.web.client.MockRestServiceServer;
 class RiotServiceTest {
 
     @Autowired
-    private RiotService riotService;
+    private MockRestServiceServer mockServer;
 
     @Autowired
-    private MockRestServiceServer mockServer;
+    private RiotService riotService;
 
     @Autowired
     private ObjectMapper objectMapper;
