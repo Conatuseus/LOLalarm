@@ -30,7 +30,3 @@ out/
 
 ### VS Code ###
 .vscode/
-
-### Class ###
-/src/main/java/com/conatuseus/oppalol/web/RiotController.java
-
