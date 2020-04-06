@@ -1,10 +1,10 @@
-package com.conatuseus.oppalol.service.riotservice;
+package com.conatuseus.oppalol.service;
 
 import com.conatuseus.oppalol.web.dto.RiotSummonerResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -18,13 +18,16 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Service
 public class RiotService {
 
+    public static final String RIOT_API_KEY = "riotAPIKey";
     private final RestTemplate restTemplate;
+    private final RedisTemplate<String, Object> redisTemplate;
 
     @Value("${riot.api.summoner}")
     private String findSummonerApiUrl;
 
-    public RiotService(final RestTemplateBuilder restTemplateBuilder) {
+    public RiotService(final RestTemplateBuilder restTemplateBuilder, final RedisTemplate<String, Object> redisTemplate) {
         this.restTemplate = restTemplateBuilder.build();
+        this.redisTemplate = redisTemplate;
     }
 
     public RiotSummonerResponse findSummoner(final String summonerName) {
@@ -32,8 +35,9 @@ public class RiotService {
             .buildAndExpand(summonerName);
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        // TODO: RIOT API KEY를 private 레포에서 가져오도록 하기
-//        httpHeaders.set("X-Riot-Token","");
+        ValueOperations<String, Object> vop = redisTemplate.opsForValue();
+        String riotAPIKey = (String) vop.get(RIOT_API_KEY);
+        httpHeaders.set("X-Riot-Token", riotAPIKey);
 
         HttpEntity<?> httpEntity = new HttpEntity<>(httpHeaders);
         ResponseEntity<RiotSummonerResponse> responseEntity = restTemplate.exchange(uriComponents.toUriString(), HttpMethod.GET, httpEntity, RiotSummonerResponse.class);

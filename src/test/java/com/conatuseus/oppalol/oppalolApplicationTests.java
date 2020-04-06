@@ -1,4 +1,4 @@
-package com.conatuseus.oppalol.demo;
+package com.conatuseus.oppalol;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

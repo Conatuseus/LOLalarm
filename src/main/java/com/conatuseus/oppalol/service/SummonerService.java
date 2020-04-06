@@ -1,8 +1,6 @@
-package com.conatuseus.oppalol.service.summoner;
+package com.conatuseus.oppalol.service;
 
-import com.conatuseus.oppalol.domain.summoner.Summoner;
 import com.conatuseus.oppalol.domain.summoner.SummonerRepository;
-import com.conatuseus.oppalol.service.riotservice.RiotService;
 import com.conatuseus.oppalol.web.dto.RiotSummonerResponse;
 import com.conatuseus.oppalol.web.dto.SummonerResponse;
 import lombok.RequiredArgsConstructor;
@@ -18,10 +16,6 @@ public class SummonerService {
     private final SummonerRepository summonerRepository;
 
     public SummonerResponse findSummoner(final String summonerName) {
-        if (summonerRepository.existsByName(summonerName)) {
-            Summoner summoner = summonerRepository.findByName(summonerName);
-            return new SummonerResponse(summoner);
-        }
         RiotSummonerResponse riotSummonerResponse = riotService.findSummoner(summonerName);
         return new SummonerResponse(riotSummonerResponse);
     }

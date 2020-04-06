@@ -1,6 +1,6 @@
 package com.conatuseus.oppalol.web;
 
-import com.conatuseus.oppalol.service.summoner.SummonerService;
+import com.conatuseus.oppalol.service.SummonerService;
 import com.conatuseus.oppalol.web.dto.SummonerResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ public class SummonerController {
     private final SummonerService summonerService;
 
     @GetMapping("/{summonerName}")
-    public ResponseEntity<SummonerResponse> findSummoner(@PathVariable String summonerName) {
+    public ResponseEntity<SummonerResponse> findSummoner(@PathVariable final String summonerName) {
         SummonerResponse summoner = summonerService.findSummoner(summonerName);
         return ResponseEntity.ok(summoner);
     }
