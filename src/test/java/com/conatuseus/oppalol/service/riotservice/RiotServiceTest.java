@@ -26,5 +26,9 @@ class RiotServiceTest {
     void findSummoner() throws JsonProcessingException {
         //given
 
+
+        //when
+
+        //then
     }
 }

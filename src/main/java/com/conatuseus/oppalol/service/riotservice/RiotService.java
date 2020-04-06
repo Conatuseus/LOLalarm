@@ -40,7 +40,8 @@ public class RiotService {
         httpHeaders.set("X-Riot-Token", riotAPIKey);
 
         HttpEntity<?> httpEntity = new HttpEntity<>(httpHeaders);
-        ResponseEntity<RiotSummonerResponse> responseEntity = restTemplate.exchange(uriComponents.toUriString(), HttpMethod.GET, httpEntity, RiotSummonerResponse.class);
+        ResponseEntity<RiotSummonerResponse> responseEntity = restTemplate.exchange(
+            uriComponents.toUriString(), HttpMethod.GET, httpEntity, RiotSummonerResponse.class);
 
         if (responseEntity.getStatusCode() != HttpStatus.OK) {
             throw new IllegalArgumentException("해당 사용자를 찾을 수 없습니다.");
