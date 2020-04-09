@@ -1,8 +1,8 @@
 package com.conatuseus.oppalol.service;
 
 import com.conatuseus.oppalol.domain.summoner.SummonerRepository;
-import com.conatuseus.oppalol.web.dto.RiotSummonerResponse;
-import com.conatuseus.oppalol.web.dto.SummonerResponse;
+import com.conatuseus.oppalol.web.dto.RiotSummonerResponseDto;
+import com.conatuseus.oppalol.web.dto.SummonerResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,8 +15,8 @@ public class SummonerService {
     private final RiotService riotService;
     private final SummonerRepository summonerRepository;
 
-    public SummonerResponse findSummoner(final String summonerName) {
-        RiotSummonerResponse riotSummonerResponse = riotService.findSummoner(summonerName);
-        return new SummonerResponse(riotSummonerResponse);
+    public SummonerResponseDto findSummoner(final String summonerName) {
+        RiotSummonerResponseDto riotSummonerResponseDto = riotService.findSummoner(summonerName);
+        return new SummonerResponseDto(riotSummonerResponseDto);
     }
 }

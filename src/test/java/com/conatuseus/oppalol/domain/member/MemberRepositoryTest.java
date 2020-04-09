@@ -1,4 +1,4 @@
-package com.conatuseus.oppalol.domain.user;
+package com.conatuseus.oppalol.domain.member;
 
 import org.junit.After;
 import org.junit.jupiter.api.BeforeEach;

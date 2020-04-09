@@ -1,4 +1,4 @@
-package com.conatuseus.oppalol.domain.user;
+package com.conatuseus.oppalol.domain.member;
 
 import com.conatuseus.oppalol.domain.base.BaseEntity;
 import lombok.Builder;

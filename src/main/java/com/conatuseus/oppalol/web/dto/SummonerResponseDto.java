@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class SummonerResponse {
+public class SummonerResponseDto {
 
     private String encryptedId;
     private String name;
@@ -16,7 +16,7 @@ public class SummonerResponse {
     private Long summonerLevel;
 
     @Builder
-    public SummonerResponse(final String encryptedId, final String name, final String accountId, final String puuId, final Long summonerLevel) {
+    public SummonerResponseDto(final String encryptedId, final String name, final String accountId, final String puuId, final Long summonerLevel) {
         this.encryptedId = encryptedId;
         this.name = name;
         this.accountId = accountId;
@@ -24,7 +24,7 @@ public class SummonerResponse {
         this.summonerLevel = summonerLevel;
     }
 
-    public SummonerResponse(final Summoner summoner) {
+    public SummonerResponseDto(final Summoner summoner) {
         this.encryptedId = summoner.getEncryptedId();
         this.name = summoner.getName();
         this.accountId = summoner.getAccountId();
@@ -32,11 +32,11 @@ public class SummonerResponse {
         this.summonerLevel = summoner.getSummonerLevel();
     }
 
-    public SummonerResponse(final RiotSummonerResponse riotSummonerResponse) {
-        this.encryptedId = riotSummonerResponse.getId();
-        this.name = riotSummonerResponse.getName();
-        this.accountId = riotSummonerResponse.getAccountId();
-        this.puuId = riotSummonerResponse.getPuuid();
-        this.summonerLevel = riotSummonerResponse.getSummonerLevel();
+    public SummonerResponseDto(final RiotSummonerResponseDto riotSummonerResponseDto) {
+        this.encryptedId = riotSummonerResponseDto.getId();
+        this.name = riotSummonerResponseDto.getName();
+        this.accountId = riotSummonerResponseDto.getAccountId();
+        this.puuId = riotSummonerResponseDto.getPuuid();
+        this.summonerLevel = riotSummonerResponseDto.getSummonerLevel();
     }
 }

@@ -1,6 +1,6 @@
 package com.conatuseus.oppalol.service;
 
-import com.conatuseus.oppalol.web.dto.RiotSummonerResponse;
+import com.conatuseus.oppalol.web.dto.RiotSummonerResponseDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -30,7 +30,7 @@ public class RiotService {
         this.redisTemplate = redisTemplate;
     }
 
-    public RiotSummonerResponse findSummoner(final String summonerName) {
+    public RiotSummonerResponseDto findSummoner(final String summonerName) {
         UriComponents uriComponents = UriComponentsBuilder.fromHttpUrl(findSummonerApiUrl)
             .buildAndExpand(summonerName);
 
@@ -40,7 +40,7 @@ public class RiotService {
         httpHeaders.set("X-Riot-Token", riotAPIKey);
 
         HttpEntity<?> httpEntity = new HttpEntity<>(httpHeaders);
-        ResponseEntity<RiotSummonerResponse> responseEntity = restTemplate.exchange(uriComponents.toUriString(), HttpMethod.GET, httpEntity, RiotSummonerResponse.class);
+        ResponseEntity<RiotSummonerResponseDto> responseEntity = restTemplate.exchange(uriComponents.toUriString(), HttpMethod.GET, httpEntity, RiotSummonerResponseDto.class);
 
         if (responseEntity.getStatusCode() != HttpStatus.OK) {
             throw new IllegalArgumentException("해당 사용자를 찾을 수 없습니다.");

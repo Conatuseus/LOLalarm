@@ -1,7 +1,7 @@
 package com.conatuseus.oppalol.web;
 
 import com.conatuseus.oppalol.service.SummonerService;
-import com.conatuseus.oppalol.web.dto.SummonerResponse;
+import com.conatuseus.oppalol.web.dto.SummonerResponseDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
@@ -27,10 +27,10 @@ class SummonerControllerTest {
     @Test
     void findSummoner() {
         //given
-        SummonerResponse summonerResponse = new SummonerResponse("encryptedId", "name", "accountId", "puuid", 100L);
+        SummonerResponseDto summonerResponseDto = new SummonerResponseDto("encryptedId", "name", "accountId", "puuid", 100L);
 
         //when
-        when(summonerService.findSummoner("name")).thenReturn(summonerResponse);
+        when(summonerService.findSummoner("name")).thenReturn(summonerResponseDto);
 
         //then
         webTestClient.get()
