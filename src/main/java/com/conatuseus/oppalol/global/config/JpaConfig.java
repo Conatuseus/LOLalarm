@@ -1,4 +1,4 @@
-package com.conatuseus.oppalol.config;
+package com.conatuseus.oppalol.global.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

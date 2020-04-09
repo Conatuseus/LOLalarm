@@ -1,7 +1,7 @@
 package com.conatuseus.oppalol.service;
 
-import com.conatuseus.oppalol.web.dto.RiotSummonerResponse;
-import com.conatuseus.oppalol.web.dto.SummonerResponse;
+import com.conatuseus.oppalol.web.dto.RiotSummonerResponseDto;
+import com.conatuseus.oppalol.web.dto.SummonerResponseDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,14 +24,14 @@ class SummonerServiceTest {
     void findSummoner() {
         //given
         given(riotService.findSummoner("summonerName")).willReturn(
-            new RiotSummonerResponse("accountId", 100, 123L, "summonerName", "id", "puuid", 321L));
+            new RiotSummonerResponseDto("accountId", 100, 123L, "summonerName", "id", "puuid", 321L));
 
         //when
-        SummonerResponse summonerResponse = summonerService.findSummoner("summonerName");
+        SummonerResponseDto summonerResponseDto = summonerService.findSummoner("summonerName");
 
         //then
-        assertThat(summonerResponse.getAccountId()).isEqualTo("accountId");
-        assertThat(summonerResponse.getName()).isEqualTo("summonerName");
-        assertThat(summonerResponse.getSummonerLevel()).isEqualTo(321L);
+        assertThat(summonerResponseDto.getAccountId()).isEqualTo("accountId");
+        assertThat(summonerResponseDto.getName()).isEqualTo("summonerName");
+        assertThat(summonerResponseDto.getSummonerLevel()).isEqualTo(321L);
     }
 }

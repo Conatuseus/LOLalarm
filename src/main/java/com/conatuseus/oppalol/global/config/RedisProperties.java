@@ -1,4 +1,4 @@
-package com.conatuseus.oppalol.config;
+package com.conatuseus.oppalol.global.config;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

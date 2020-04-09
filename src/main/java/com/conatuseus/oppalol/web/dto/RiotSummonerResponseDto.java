@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class RiotSummonerResponse {
+public class RiotSummonerResponseDto {
 
     private String accountId;
     private int profileIconId;
@@ -17,7 +17,7 @@ public class RiotSummonerResponse {
     private long summonerLevel;
 
     @Builder
-    public RiotSummonerResponse(final String accountId, final int profileIconId, final long revisionDate, final String name, final String id, final String puuid, final long summonerLevel) {
+    public RiotSummonerResponseDto(final String accountId, final int profileIconId, final long revisionDate, final String name, final String id, final String puuid, final long summonerLevel) {
         this.accountId = accountId;
         this.profileIconId = profileIconId;
         this.revisionDate = revisionDate;
