@@ -1,6 +1,5 @@
 package com.conatuseus.oppalol.web;
 
-import com.conatuseus.oppalol.domain.member.Member;
 import com.conatuseus.oppalol.service.MemberService;
 import com.conatuseus.oppalol.web.dto.MemberResponseDto;
 import com.conatuseus.oppalol.web.dto.MemberSignUpRequestDto;

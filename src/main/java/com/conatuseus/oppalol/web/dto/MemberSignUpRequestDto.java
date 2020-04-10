@@ -47,11 +47,11 @@ public class MemberSignUpRequestDto {
         return password.equals(confirmPassword);
     }
 
-    public Member toEntity() {
+    public Member toEntity(final String encodedPassword) {
         return Member.builder()
             .email(email)
             .name(name)
-            .password(password)
+            .password(encodedPassword)
             .role(Role.MEMBER)
             .build();
     }

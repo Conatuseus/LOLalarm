@@ -12,6 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -23,6 +24,9 @@ class MemberServiceTest {
 
     @Mock
     private MemberRepository memberRepository;
+
+    @Mock
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @InjectMocks
     private MemberService memberService;
@@ -49,6 +53,7 @@ class MemberServiceTest {
 
         MemberSignUpRequestDto requestDto = new MemberSignUpRequestDto(email, password, confirmPassword, name);
 
+        when(bCryptPasswordEncoder.encode(any())).thenReturn("%1%2%3%a%b");
         when(memberRepository.existsMemberByEmail(email)).thenReturn(false);
         when(memberRepository.save(any())).thenReturn(member);
 
