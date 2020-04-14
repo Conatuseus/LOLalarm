@@ -1,5 +1,6 @@
 package com.conatuseus.oppalol.web.dto;
 
+import com.conatuseus.oppalol.domain.summoner.Summoner;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,5 +26,16 @@ public class RiotSummonerResponseDto {
         this.id = id;
         this.puuid = puuid;
         this.summonerLevel = summonerLevel;
+    }
+
+    public Summoner toEntity() {
+        return Summoner.builder()
+            .encryptedId(id)
+            .accountId(accountId)
+            .profileIconId(profileIconId)
+            .name(name)
+            .summonerLevel(summonerLevel)
+            .puuId(puuid)
+            .build();
     }
 }

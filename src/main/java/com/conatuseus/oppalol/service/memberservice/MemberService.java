@@ -1,7 +1,6 @@
-package com.conatuseus.oppalol.service;
+package com.conatuseus.oppalol.service.memberservice;
 
 import com.conatuseus.oppalol.domain.member.Member;
-import com.conatuseus.oppalol.domain.member.MemberRepository;
 import com.conatuseus.oppalol.domain.member.exception.DuplicatedEmailException;
 import com.conatuseus.oppalol.web.dto.MemberResponseDto;
 import com.conatuseus.oppalol.web.dto.MemberSignUpRequestDto;
@@ -15,16 +14,16 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class MemberService {
 
-    private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final MemberInternalService memberInternalService;
 
     public MemberResponseDto saveMember(final MemberSignUpRequestDto requestDto) {
-        if (memberRepository.existsMemberByEmail(requestDto.getEmail())) {
+        if (memberInternalService.existsMemberByEmail(requestDto.getEmail())) {
             throw new DuplicatedEmailException(requestDto.getEmail());
         }
 
         String encodedPassword = bCryptPasswordEncoder.encode(requestDto.getPassword());
-        Member savedMember = memberRepository.save(requestDto.toEntity(encodedPassword));
+        Member savedMember = memberInternalService.save(requestDto.toEntity(encodedPassword));
         return new MemberResponseDto(savedMember);
     }
 }

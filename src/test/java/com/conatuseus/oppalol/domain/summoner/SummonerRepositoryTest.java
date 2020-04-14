@@ -40,7 +40,7 @@ class SummonerRepositoryTest {
         List<Summoner> summoners = summonerRepository.findAll();
 
         //then
-        Summoner summoner = summoners.get(0);
+        Summoner summoner = summoners.stream().filter(it -> it.getName().equals(name)).findFirst().get();
         assertThat(summoner.getName()).isEqualTo(name);
         assertThat(summoner.getEncryptedId()).isEqualTo(encryptedId);
     }

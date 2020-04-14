@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SummonerResponseDto {
 
+    private Long id;
     private String encryptedId;
     private String name;
     private String accountId;
@@ -16,7 +17,7 @@ public class SummonerResponseDto {
     private Long summonerLevel;
 
     @Builder
-    public SummonerResponseDto(final String encryptedId, final String name, final String accountId, final String puuId, final Long summonerLevel) {
+    public SummonerResponseDto(final Long id, final String encryptedId, final String name, final String accountId, final String puuId, final Long summonerLevel) {
         this.encryptedId = encryptedId;
         this.name = name;
         this.accountId = accountId;
@@ -25,6 +26,7 @@ public class SummonerResponseDto {
     }
 
     public SummonerResponseDto(final Summoner summoner) {
+        this.id = summoner.getId();
         this.encryptedId = summoner.getEncryptedId();
         this.name = summoner.getName();
         this.accountId = summoner.getAccountId();

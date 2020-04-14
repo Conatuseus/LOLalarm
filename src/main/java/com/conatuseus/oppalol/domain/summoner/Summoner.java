@@ -28,12 +28,16 @@ public class Summoner extends BaseEntity {
     @Column(nullable = false)
     private Long summonerLevel;
 
+    @Column(nullable = false)
+    private int profileIconId;
+
     @Builder
-    public Summoner(final String encryptedId, final String name, final String accountId, final String puuId, final Long summonerLevel) {
+    public Summoner(final String encryptedId, final String name, final String accountId, final String puuId, final Long summonerLevel, final int profileIconId) {
         this.encryptedId = encryptedId;
         this.name = name;
         this.accountId = accountId;
         this.puuId = puuId;
         this.summonerLevel = summonerLevel;
+        this.profileIconId = profileIconId;
     }
 }

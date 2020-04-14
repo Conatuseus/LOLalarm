@@ -40,7 +40,7 @@ public class MemberRepositoryTest {
         List<Member> members = memberRepository.findAll();
 
         //then
-        Member savedMember = members.get(0);
+        Member savedMember = members.stream().filter(it -> it.getEmail().equals(member.getEmail())).findAny().get();
         assertThat(savedMember.getEmail()).isEqualTo(member.getEmail());
         assertThat(savedMember.getName()).isEqualTo(member.getName());
     }

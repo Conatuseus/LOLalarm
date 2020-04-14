@@ -1,6 +1,6 @@
 package com.conatuseus.oppalol.web;
 
-import com.conatuseus.oppalol.service.MemberService;
+import com.conatuseus.oppalol.service.memberservice.MemberService;
 import com.conatuseus.oppalol.web.dto.MemberResponseDto;
 import com.conatuseus.oppalol.web.dto.MemberSignUpRequestDto;
 import lombok.RequiredArgsConstructor;
