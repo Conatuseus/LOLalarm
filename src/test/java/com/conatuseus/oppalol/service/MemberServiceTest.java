@@ -1,9 +1,10 @@
 package com.conatuseus.oppalol.service;
 
 import com.conatuseus.oppalol.domain.member.Member;
-import com.conatuseus.oppalol.domain.member.MemberRepository;
 import com.conatuseus.oppalol.domain.member.Role;
 import com.conatuseus.oppalol.domain.member.exception.DuplicatedEmailException;
+import com.conatuseus.oppalol.service.memberservice.MemberInternalService;
+import com.conatuseus.oppalol.service.memberservice.MemberService;
 import com.conatuseus.oppalol.web.dto.MemberResponseDto;
 import com.conatuseus.oppalol.web.dto.MemberSignUpRequestDto;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +24,7 @@ import static org.mockito.Mockito.when;
 class MemberServiceTest {
 
     @Mock
-    private MemberRepository memberRepository;
+    private MemberInternalService memberInternalService;
 
     @Mock
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -54,8 +55,8 @@ class MemberServiceTest {
         MemberSignUpRequestDto requestDto = new MemberSignUpRequestDto(email, password, confirmPassword, name);
 
         when(bCryptPasswordEncoder.encode(any())).thenReturn("%1%2%3%a%b");
-        when(memberRepository.existsMemberByEmail(email)).thenReturn(false);
-        when(memberRepository.save(any())).thenReturn(member);
+        when(memberInternalService.existsMemberByEmail(email)).thenReturn(false);
+        when(memberInternalService.save(any())).thenReturn(member);
 
         //when
         MemberResponseDto memberResponseDto = memberService.saveMember(requestDto);
@@ -76,7 +77,7 @@ class MemberServiceTest {
 
         MemberSignUpRequestDto requestDto = new MemberSignUpRequestDto(email, password, confirmPassword, name);
 
-        when(memberRepository.existsMemberByEmail(email)).thenReturn(true);
+        when(memberInternalService.existsMemberByEmail(email)).thenReturn(true);
 
         //when
         assertThrows(DuplicatedEmailException.class, () -> memberService.saveMember(requestDto));

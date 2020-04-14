@@ -1,4 +1,4 @@
-package com.conatuseus.oppalol.service;
+package com.conatuseus.oppalol.service.riotservice;
 
 import com.conatuseus.oppalol.web.dto.RiotSummonerResponseDto;
 import org.springframework.beans.factory.annotation.Value;

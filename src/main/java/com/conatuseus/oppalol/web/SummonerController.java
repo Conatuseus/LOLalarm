@@ -1,6 +1,6 @@
 package com.conatuseus.oppalol.web;
 
-import com.conatuseus.oppalol.service.SummonerService;
+import com.conatuseus.oppalol.service.summonerservice.SummonerService;
 import com.conatuseus.oppalol.web.dto.SummonerResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

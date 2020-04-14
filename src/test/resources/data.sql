@@ -1,0 +1,2 @@
+insert into member(id, email, name, password, role) values (999999999, 'conatuseus999@gmail.com', '사명기', 'p@ssW0rd', 'MEMBER');
+insert into summoner(id, encrypted_id, name, account_id, puu_id, summoner_level, profile_icon_id) values (999999998, 'TestEncryptedId','maldive','TestAccountId','TestPuuId', 999, 999);
