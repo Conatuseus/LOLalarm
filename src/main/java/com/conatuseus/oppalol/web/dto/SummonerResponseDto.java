@@ -18,6 +18,7 @@ public class SummonerResponseDto {
 
     @Builder
     public SummonerResponseDto(final Long id, final String encryptedId, final String name, final String accountId, final String puuId, final Long summonerLevel) {
+        this.id = id;
         this.encryptedId = encryptedId;
         this.name = name;
         this.accountId = accountId;

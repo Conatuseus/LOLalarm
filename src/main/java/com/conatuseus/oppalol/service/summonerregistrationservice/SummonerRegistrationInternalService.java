@@ -31,7 +31,7 @@ public class SummonerRegistrationInternalService {
             return summonerRegistrationRepository.save(new SummonerRegistration(member, foundSummoner));
         }
         RiotSummonerResponseDto riotSummoner = riotService.findSummoner(requestDto.getSummonerName());
-        Summoner savedSummoner = summonerInternalService.save(riotSummoner.toEntity());
+        Summoner savedSummoner = summonerInternalService.saveSummoner(riotSummoner.toEntity());
         return summonerRegistrationRepository.save(new SummonerRegistration(member, savedSummoner));
     }
 }
