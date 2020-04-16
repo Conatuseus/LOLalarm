@@ -2,6 +2,7 @@ package com.conatuseus.oppalol.service.summonerservice;
 
 import com.conatuseus.oppalol.domain.summoner.Summoner;
 import com.conatuseus.oppalol.domain.summoner.SummonerRepository;
+import com.conatuseus.oppalol.domain.summoner.exception.DuplicatedSummonerException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,10 @@ public class SummonerInternalService {
         return summonerRepository.findByName(summonerName);
     }
 
-    public Summoner save(final Summoner summoner) {
+    public Summoner saveSummoner(final Summoner summoner) {
+        if (existsByName(summoner.getName())) {
+            throw new DuplicatedSummonerException(summoner.getName());
+        }
         return summonerRepository.save(summoner);
     }
 }
